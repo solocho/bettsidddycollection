@@ -829,6 +829,112 @@
             background: var(--accent);
         }
         
+        /* ===== WISHLIST SIDEBAR ===== */
+        .wishlist-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .wishlist-sidebar.active {
+            right: 0;
+        }
+        
+        .wishlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .wishlist-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .close-wishlist {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .wishlist-items {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .wishlist-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .wishlist-item-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .wishlist-item-details {
+            flex: 1;
+        }
+        
+        .wishlist-item-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .wishlist-item-price {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .move-to-cart {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--primary);
+            color: white;
+            font-size: 12px;
+            border-radius: 4px;
+            margin-top: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .move-to-cart:hover {
+            background: var(--accent);
+        }
+        
+        .remove-wishlist-item {
+            color: #999;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: var(--transition);
+        }
+        
+        .remove-wishlist-item:hover {
+            color: var(--accent);
+        }
+        
         .overlay {
             position: fixed;
             top: 0;
@@ -1130,6 +1236,10 @@
             .cart-sidebar {
                 max-width: 300px;
             }
+            
+            .wishlist-sidebar {
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -1204,7 +1314,7 @@
                 <div class="slide-content">
                     <h1 class="slide-title">BettSiddy Bags</h1>
                     <p class="slide-motto">Luxury Handbags - Largest Range Available</p>
-                    <button class="shop-btn">Shop Now</button>
+                    <a href="#" class="shop-btn">Shop Now</a> <!-- Changed to anchor tag -->
                 </div>
             </div>
             
@@ -1215,7 +1325,7 @@
                 <div class="slide-content">
                     <h1 class="slide-title">Premium Hoodies</h1>
                     <p class="slide-motto">Stylish and Comfortable for Every Occasion</p>
-                    <button class="shop-btn">Shop Now</button>
+                    <a href="#" class="shop-btn">Shop Now</a> <!-- Changed to anchor tag -->
                 </div>
             </div>
             
@@ -1226,7 +1336,7 @@
                 <div class="slide-content">
                     <h1 class="slide-title">Elegant Jewelry</h1>
                     <p class="slide-motto">Timeless Beauty, Crafted to Perfection</p>
-                    <button class="shop-btn">Shop Now</button>
+                    <a href="#" class="shop-btn">Shop Now</a> <!-- Changed to anchor tag -->
                 </div>
             </div>
         </div>
@@ -1473,7 +1583,7 @@
                     <div class="collection-overlay">
                         <h3 class="collection-title">Bags</h3>
                         <p class="collection-desc">Discover our premium collection of luxury handbags</p>
-                        <button class="collection-btn">View Collection</button>
+                        <a href="#" class="collection-btn">View Collection</a> <!-- Changed to anchor tag -->
                     </div>
                 </div>
                 
@@ -1483,7 +1593,7 @@
                     <div class="collection-overlay">
                         <h3 class="collection-title">Hoodies</h3>
                         <p class="collection-desc">Stylish and comfortable for any occasion</p>
-                        <button class="collection-btn">View Collection</button>
+                        <a href="#" class="collection-btn">View Collection</a> <!-- Changed to anchor tag -->
                     </div>
                 </div>
                 
@@ -1493,7 +1603,7 @@
                     <div class="collection-overlay">
                         <h3 class="collection-title">Jewelry</h3>
                         <p class="collection-desc">Elegant pieces crafted to perfection</p>
-                        <button class="collection-btn">View Collection</button>
+                        <a href="#" class="collection-btn">View Collection</a> <!-- Changed to anchor tag -->
                     </div>
                 </div>
             </div>
@@ -1514,7 +1624,20 @@
         <div class="cart-total">
             Total: <span id="cart-total">KES0.00</span>
         </div>
-        <button class="checkout-btn">Proceed to Checkout</button>
+        <a href="#" class="checkout-btn">Proceed to Checkout</a> <!-- Changed to anchor tag -->
+    </div>
+    
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlist-sidebar">
+        <div class="wishlist-header">
+            <h3 class="wishlist-title">Your Wishlist</h3>
+            <button class="close-wishlist" id="close-wishlist">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlist-items">
+            <!-- Wishlist items will be added here dynamically -->
+        </div>
     </div>
     
     <!-- Overlay -->
@@ -1609,6 +1732,7 @@
                 slideIndex: 0,
                 mobileMenuOpen: false,
                 cartOpen: false,
+                wishlistOpen: false,
                 currentProductTab: "featured"
             };
             
@@ -1619,11 +1743,14 @@
                 cartBtn: document.getElementById('cart-btn'),
                 closeCart: document.getElementById('close-cart'),
                 cartSidebar: document.getElementById('cart-sidebar'),
+                wishlistBtn: document.getElementById('wishlist-btn'),
+                closeWishlist: document.getElementById('close-wishlist'),
+                wishlistSidebar: document.getElementById('wishlist-sidebar'),
                 overlay: document.getElementById('overlay'),
                 cartItems: document.getElementById('cart-items'),
+                wishlistItems: document.getElementById('wishlist-items'),
                 cartTotal: document.getElementById('cart-total'),
                 cartCount: document.querySelector('.cart-count'),
-                wishlistBtn: document.getElementById('wishlist-btn'),
                 wishlistCount: document.querySelector('.wishlist-count'),
                 dropdownToggles: document.querySelectorAll('.dropdown-toggle'),
                 productTabs: document.querySelectorAll('.product-tab'),
@@ -1664,14 +1791,32 @@
                 // Cart toggle
                 elements.cartBtn.addEventListener('click', openCart);
                 elements.closeCart.addEventListener('click', closeCart);
-                elements.overlay.addEventListener('click', closeCart);
+                
+                // Wishlist toggle
+                elements.wishlistBtn.addEventListener('click', openWishlist);
+                elements.closeWishlist.addEventListener('click', closeWishlist);
+                
+                // Overlay click
+                elements.overlay.addEventListener('click', function() {
+                    closeCart();
+                    closeWishlist();
+                    closeMobileMenu();
+                });
                 
                 // Dropdown toggles
                 elements.dropdownToggles.forEach(toggle => {
-                    toggle.addEventListener('click', function() {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
                         const dropdown = this.parentElement.querySelector('.mobile-dropdown');
                         this.classList.toggle('active');
                         dropdown.classList.toggle('active');
+                    });
+                });
+                
+                // Mobile menu links
+                document.querySelectorAll('.mobile-nav a:not(.dropdown-toggle a)').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        closeMobileMenu();
                     });
                 });
                 
@@ -1746,10 +1891,20 @@
                 updateUI();
             }
             
+            function closeMobileMenu() {
+                state.mobileMenuOpen = false;
+                elements.mobileMenu.classList.remove('active');
+                elements.overlay.classList.remove('active');
+            }
+            
             // Open cart
             function openCart() {
                 state.cartOpen = true;
+                state.wishlistOpen = false;
+                state.mobileMenuOpen = false;
                 elements.cartSidebar.classList.add('active');
+                elements.wishlistSidebar.classList.remove('active');
+                elements.mobileMenu.classList.remove('active');
                 elements.overlay.classList.add('active');
                 renderCart();
             }
@@ -1757,9 +1912,26 @@
             // Close cart
             function closeCart() {
                 state.cartOpen = false;
+                elements.cartSidebar.classList.remove('active');
+                elements.overlay.classList.remove('active');
+            }
+            
+            // Open wishlist
+            function openWishlist() {
+                state.wishlistOpen = true;
+                state.cartOpen = false;
                 state.mobileMenuOpen = false;
+                elements.wishlistSidebar.classList.add('active');
                 elements.cartSidebar.classList.remove('active');
                 elements.mobileMenu.classList.remove('active');
+                elements.overlay.classList.add('active');
+                renderWishlist();
+            }
+            
+            // Close wishlist
+            function closeWishlist() {
+                state.wishlistOpen = false;
+                elements.wishlistSidebar.classList.remove('active');
                 elements.overlay.classList.remove('active');
             }
             
@@ -1778,6 +1950,50 @@
                 
                 saveState();
                 updateUI();
+                
+                // If wishlist is open, update it
+                if (state.wishlistOpen) {
+                    renderWishlist();
+                }
+            }
+            
+            // Render wishlist
+            function renderWishlist() {
+                let wishlistHTML = '';
+                
+                state.wishlist.forEach(productId => {
+                    const product = products[productId];
+                    
+                    wishlistHTML += `
+                        <div class="wishlist-item" data-id="${productId}">
+                            <img src="${product.image}" alt="${product.name}" class="wishlist-item-img">
+                            <div class="wishlist-item-details">
+                                <h4 class="wishlist-item-name">${product.name}</h4>
+                                <div class="wishlist-item-price">KES${product.price.toFixed(2)}</div>
+                                <div class="move-to-cart">Move to Cart</div>
+                                <div class="remove-wishlist-item">Remove</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                elements.wishlistItems.innerHTML = wishlistHTML || '<p>Your wishlist is empty</p>';
+                
+                // Add event listeners to new wishlist elements
+                document.querySelectorAll('.move-to-cart').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = this.closest('.wishlist-item').getAttribute('data-id');
+                        addToCart(productId);
+                        toggleWishlist(productId);
+                    });
+                });
+                
+                document.querySelectorAll('.remove-wishlist-item').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = this.closest('.wishlist-item').getAttribute('data-id');
+                        toggleWishlist(productId);
+                    });
+                });
             }
             
             // Add to cart
