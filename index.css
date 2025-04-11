@@ -1061,7 +1061,7 @@ button:hover {
 .body-5 {
     background-color: #3E2723; /* Dark Brown */
     color: #FFF8E1; /* Cream */
-    padding: 40px 0;
+    padding: 30px 0;
     text-align: center;
     font-family: 'Arial', sans-serif;
 }
@@ -1072,6 +1072,7 @@ button:hover {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 /* Footer Links Section */
@@ -1079,22 +1080,29 @@ button:hover {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 20px 10px;
 }
 
 .b-5-s div {
     width: 20%;
+    min-width: 150px;
     text-align: left;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .b-5-s p {
     margin: 8px 0;
+    font-size: 14px;
 }
 
 .b-5-s a {
     color: #FFF8E1;
     text-decoration: none;
     transition: 0.3s ease-in-out;
+    display: inline-block;
+    padding: 2px 0;
 }
 
 .b-5-s a:hover {
@@ -1102,6 +1110,10 @@ button:hover {
 }
 
 /* Social Media Icons */
+.connect {
+    text-align: center;
+}
+
 .connect a img {
     width: 30px;
     height: 30px;
@@ -1118,13 +1130,15 @@ button:hover {
 .b-5-t {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
     margin: 20px 0;
+    padding: 0 10px;
 }
 
 .b-5-t img {
-    width: 50px;
-    height: 30px;
+    width: 45px;
+    height: 28px;
     transition: transform 0.3s;
 }
 
@@ -1134,26 +1148,84 @@ button:hover {
 
 /* Footer Bottom */
 .b-5-fo {
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 20px;
     border-top: 1px solid #FFF8E1;
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    line-height: 1.5;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .body-5 {
+        padding: 25px 0;
+    }
+    
+    .b-5-f {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        font-size: 16px;
+    }
+    
     .b-5-s {
         flex-direction: column;
         align-items: center;
+        padding: 15px 5px;
     }
-
+    
     .b-5-s div {
-        width: 80%;
+        width: 100%;
+        max-width: 250px;
         text-align: center;
+        margin-bottom: 25px;
     }
+    
+    .b-5-s p {
+        font-size: 13px;
+    }
+    
+    .b-5-t {
+        gap: 8px;
+    }
+    
+    .b-5-t img {
+        width: 40px;
+        height: 25px;
+    }
+    
+    .b-5-fo {
+        font-size: 11px;
+        padding: 15px 15px 0;
+    }
+}
 
+@media (max-width: 480px) {
+    .body-5 {
+        padding: 20px 0;
+    }
+    
     .b-5-f {
-        flex-direction: column;
-        text-align: center;
+        font-size: 15px;
+    }
+    
+    .b-5-s div {
+        margin-bottom: 20px;
+    }
+    
+    .connect a img {
+        width: 28px;
+        height: 28px;
+        margin: 4px;
+    }
+    
+    .b-5-t img {
+        width: 36px;
+        height: 22px;
+    }
+    
+    .b-5-fo {
+        font-size: 10px;
     }
 }
