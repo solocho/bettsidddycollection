@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | BettSiddy Collections</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        :root {
+            --primary: #FF914D;    /* Warm Orange */
+            --secondary: #3E2723;   /* Dark Brown */
+            --light: #FFF8E1;      /* Cream */
+            --accent: #D32F2F;     /* Deep Red */
+            --text: #3E2723;       /* Dark Brown */
+            --transition: all 0.3s ease-in-out;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== HEADER STYLES ===== */
+        .header {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Georgia', serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--light);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        /* ===== PRIVACY POLICY CONTENT ===== */
+        .privacy-hero {
+            background: linear-gradient(rgba(62, 39, 35, 0.8), rgba(62, 39, 35, 0.8)), 
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .privacy-hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .privacy-hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .privacy-content {
+            padding: 60px 0;
+        }
+        
+        .privacy-section {
+            margin-bottom: 40px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .privacy-section h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .privacy-section h3 {
+            color: var(--accent);
+            margin: 25px 0 15px;
+        }
+        
+        .privacy-section p {
+            margin-bottom: 15px;
+        }
+        
+        .privacy-section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 10px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: var(--transition);
+        }
+        
+        .back-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ===== FOOTER STYLES ===== */
+        .footer {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            .privacy-hero h1 {
+                font-size: 32px;
+            }
+            
+            .privacy-hero p {
+                font-size: 16px;
+            }
+            
+            .privacy-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">BettSiddy<span>Collections</span></div>
+        </div>
+    </header>
+
+    <!-- Privacy Policy Hero Section -->
+    <section class="privacy-hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.</p>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="privacy-content">
+        <div class="container">
+            <div class="privacy-section">
+                <h2>Introduction</h2>
+                <p>Welcome to BettSiddy Collections' Privacy Policy. This document outlines how we collect, use, disclose, and safeguard your information when you visit our website or make a purchase from us.</p>
+                <p>We respect your privacy and are committed to protecting it through our compliance with this policy. By accessing or using our service, you agree to the collection and use of information in accordance with this policy.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Information We Collect</h2>
+                <p>We collect several types of information from and about users of our website, including:</p>
+                
+                <h3>Personal Information</h3>
+                <ul>
+                    <li>Name and contact details (email address, phone number, shipping address)</li>
+                    <li>Payment information (credit card details are processed securely by our payment processor)</li>
+                    <li>Purchase history and preferences</li>
+                    <li>Account credentials if you create an account with us</li>
+                </ul>
+                
+                <h3>Non-Personal Information</h3>
+                <ul>
+                    <li>Browser type and version</li>
+                    <li>Time and date of visit</li>
+                    <li>Pages visited on our site</li>
+                    <li>Time spent on those pages</li>
+                    <li>Other diagnostic data</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>How We Use Your Information</h2>
+                <p>We use the information we collect for various purposes:</p>
+                <ul>
+                    <li>To provide and maintain our service</li>
+                    <li>To process your orders and transactions</li>
+                    <li>To notify you about changes to our service</li>
+                    <li>To allow you to participate in interactive features of our service</li>
+                    <li>To provide customer support</li>
+                    <li>To gather analysis or valuable information so that we can improve our service</li>
+                    <li>To monitor the usage of our service</li>
+                    <li>To detect, prevent and address technical issues</li>
+                    <li>To provide you with news, special offers and general information about other goods, services and events which we offer (unless you have opted not to receive such information)</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Data Security</h2>
+                <p>The security of your data is important to us. We implement appropriate technical and organizational measures to protect the personal information we process.</p>
+                <p>However, please remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Cookies and Tracking Technologies</h2>
+                <p>We use cookies and similar tracking technologies to track activity on our website and hold certain information.</p>
+                <p>Cookies are files with small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Third-Party Services</h2>
+                <p>We may employ third-party companies and individuals to facilitate our service, provide the service on our behalf, perform service-related services or assist us in analyzing how our service is used.</p>
+                <p>These third parties have access to your personal information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Changes to This Privacy Policy</h2>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+                <p>We will let you know via email and/or a prominent notice on our service, prior to the change becoming effective and update the "effective date" at the bottom of this Privacy Policy.</p>
+                <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                <ul>
+                    <li>By email: privacy@bettsiddycollections.com</li>
+                    <li>By visiting this page on our website: www.bettsiddycollections.com/contact</li>
+                    <li>By phone: +1 (555) 123-4567</li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="back-btn">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                        <li><a href="returns.html">Returns & Exchanges</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-threads"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;">Subscribe to our newsletter for updates and special offers</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 BettSiddy Collections. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Current year for footer
+        document.querySelector('.footer-bottom p').innerHTML = `&copy; ${new Date().getFullYear()} BettSiddy Collections. All rights reserved.`;
+
+        // Back to top button functionality
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

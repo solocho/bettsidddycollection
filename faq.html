@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Warm & Friendly Design</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #FFF8E1; /* Cream */
+            color: #3E2723; /* Dark Brown */
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #D32F2F; /* Deep Red */
+            color: #FFF8E1; /* Cream */
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .search-container {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 1rem 1.5rem;
+            border: 2px solid #FF914D; /* Warm Orange */
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            border-color: #D32F2F; /* Deep Red */
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+        }
+
+        .search-box::placeholder {
+            color: #9E9E9E;
+        }
+
+        /* FAQ Section */
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #D32F2F; /* Deep Red */
+            position: relative;
+        }
+
+        .faq-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #FF914D; /* Warm Orange */
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background-color: rgba(255, 145, 77, 0.1); /* Warm Orange with opacity */
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(255, 145, 77, 0.2); /* Warm Orange with more opacity */
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #FF914D; /* Warm Orange */
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: white;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .faq-answer p {
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Categories */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-tab {
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            border: 2px solid #FF914D; /* Warm Orange */
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .category-tab:hover, .category-tab.active {
+            background-color: #FF914D; /* Warm Orange */
+            color: white;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background-color: #FF914D; /* Warm Orange */
+            border-radius: 8px;
+            color: white;
+        }
+
+        .contact-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #D32F2F; /* Deep Red */
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: #B71C1C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #3E2723; /* Dark Brown */
+            color: #FFF8E1; /* Cream */
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .faq-question {
+                padding: 1.2rem;
+                font-size: 1rem;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Frequently Asked Questions</h1>
+            <p class="subtitle">Find answers to common questions about our products, services, and policies. If you can't find what you're looking for, don't hesitate to contact us.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search FAQs...">
+        </div>
+
+        <div class="category-tabs">
+            <div class="category-tab active" data-category="all">All Questions</div>
+            <div class="category-tab" data-category="products">Products</div>
+            <div class="category-tab" data-category="services">Services</div>
+            <div class="category-tab" data-category="payments">Payments</div>
+            <div class="category-tab" data-category="account">Account</div>
+        </div>
+
+        <section class="faq-section">
+            <h2>Common Questions</h2>
+            
+            <div class="faq-item active" data-categories="products">
+                <div class="faq-question">What products do you offer?</div>
+                <div class="faq-answer">
+                    <p>We offer a wide range of high-quality products designed to meet your needs. Our product line includes both standard and premium options, all crafted with care and attention to detail.</p>
+                    <p>You can browse our complete catalog in the Products section of our website or visit one of our physical stores to see the items in person.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-categories="services">
+                <div class="faq-question">How can I contact customer service?</div>
+                <div class="faq-answer">
+                    <p>Our customer service team is available 24/7 to assist you with any questions or concerns. You can reach us through:</p>
+                    <ul>
+                        <li>Phone: 1-800-123-4567</li>
+                        <li>Email: support@yourcompany.com</li>
+                        <li>Live chat on our website</li>
+                        <li>Social media channels</li>
+                    </ul>
+                    <p>Average response time is less than 2 hours during business hours.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-categories="payments account">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <div class="faq-answer">
+                    <p>We accept all major credit and debit cards including Visa, MasterCard, American Express, and Discover. We also accept:</p>
+                    <ul>
+                        <li>PayPal</li>
+                        <li>Apple Pay</li>
+                        <li>Google Pay</li>
+                        <li>Bank transfers</li>
+                        <li>Cash on delivery (for local orders)</li>
+                    </ul>
+                    <p>All transactions are securely processed using industry-standard encryption.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-categories="products services">
+                <div class="faq-question">Do you offer international shipping?</div>
+                <div class="faq-answer">
+                    <p>Yes, we ship to most countries worldwide. Shipping costs and delivery times vary depending on your location and the shipping method you choose.</p>
+                    <p>During checkout, you'll be able to see the available shipping options and estimated delivery dates for your specific address.</p>
+                    <p>Please note that some products may have shipping restrictions to certain countries due to local regulations.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-categories="account">
+                <div class="faq-question">How do I reset my password?</div>
+                <div class="faq-answer">
+                    <p>If you've forgotten your password, simply click on the "Forgot Password" link on the login page. You'll be asked to enter the email address associated with your account.</p>
+                    <p>We'll send you an email with a link to reset your password. This link will expire in 24 hours for security reasons.</p>
+                    <p>If you don't receive the email within 15 minutes, please check your spam folder or contact our support team for assistance.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-categories="services">
+                <div class="faq-question">What is your return policy?</div>
+                <div class="faq-answer">
+                    <p>We offer a 30-day money-back guarantee on all our products. If you're not completely satisfied with your purchase, you can return it for a full refund or exchange.</p>
+                    <p>To initiate a return:</p>
+                    <ol>
+                        <li>Log in to your account</li>
+                        <li>Go to "Order History"</li>
+                        <li>Select the item(s) you wish to return</li>
+                        <li>Follow the return instructions</li>
+                    </ol>
+                    <p>Items must be in their original condition with all packaging intact. Some exclusions may apply.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-categories="products">
+                <div class="faq-question">Are your products eco-friendly?</div>
+                <div class="faq-answer">
+                    <p>Yes, sustainability is at the core of our business. All our products are made from environmentally friendly materials and produced using sustainable practices.</p>
+                    <p>We're proud to say that:</p>
+                    <ul>
+                        <li>98% of our packaging is recyclable or biodegradable</li>
+                        <li>We offset 100% of our carbon emissions</li>
+                        <li>Our factories run on renewable energy</li>
+                    </ul>
+                    <p>We're continuously working to reduce our environmental impact even further.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-categories="account payments">
+                <div class="faq-question">How do I update my billing information?</div>
+                <div class="faq-answer">
+                    <p>You can update your billing information at any time through your account settings:</p>
+                    <ol>
+                        <li>Log in to your account</li>
+                        <li>Click on "Account Settings"</li>
+                        <li>Select "Billing Information"</li>
+                        <li>Make your changes and click "Save"</li>
+                    </ol>
+                    <p>Your new billing information will be used for all future purchases. For security reasons, we may need to verify your identity when making changes to sensitive information.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact-cta">
+            <h3>Still have questions?</h3>
+            <p>Our friendly support team is ready to help you with any additional questions you may have.</p>
+            <button class="cta-button">Contact Us</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Bettsiddy collection. All rights reserved.</p>
+            <p>Designed with care for your comfort and convenience.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content for search highlighting
+            const originalContents = new Map();
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                originalContents.set(item, {
+                    question: question.innerHTML,
+                    answer: answer.innerHTML
+                });
+            });
+
+            // FAQ Accordion Functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+            
+            // Category Filtering
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Update active tab
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const category = tab.dataset.category;
+                    const faqItems = document.querySelectorAll('.faq-item');
+                    
+                    faqItems.forEach(item => {
+                        const itemCategories = item.dataset.categories.split(' ');
+                        
+                        if (category === 'all' || itemCategories.includes(category)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Search Functionality (Fixed Version)
+            const searchBox = document.querySelector('.search-box');
+            
+            searchBox.addEventListener('input', () => {
+                const searchTerm = searchBox.value.toLowerCase().trim();
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                faqItems.forEach(item => {
+                    // Reset to original content first
+                    const original = originalContents.get(item);
+                    item.querySelector('.faq-question').innerHTML = original.question;
+                    item.querySelector('.faq-answer').innerHTML = original.answer;
+                    
+                    if (searchTerm === '') {
+                        item.style.display = 'block';
+                        return;
+                    }
+                    
+                    const questionText = item.querySelector('.faq-question').textContent.toLowerCase();
+                    const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (questionText.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        const regex = new RegExp(searchTerm, 'gi');
+                        const highlightedQuestion = original.question.replace(regex, 
+                            match => `<span class="highlight">${match}</span>`);
+                        item.querySelector('.faq-question').innerHTML = highlightedQuestion;
+                    } else if (answerText.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        const regex = new RegExp(searchTerm, 'gi');
+                        const highlightedAnswer = original.answer.replace(regex, 
+                            match => `<span class="highlight">${match}</span>`);
+                        item.querySelector('.faq-answer').innerHTML = highlightedAnswer;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Contact Button
+            const contactButton = document.querySelector('.cta-button');
+            contactButton.addEventListener('click', () => {
+                alert('Thank you for your interest! Our support team will be happy to assist you.');
+            });
+        });
+    </script>
+</body>
+</html>

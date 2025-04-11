@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns & Exchanges | Your Brand Name</title>
+    <style>
+        :root {
+            --warm-orange: #FF914D;
+            --dark-brown: #3E2723;
+            --cream: #FFF8E1;
+            --deep-red: #D32F2F;
+            --light-orange: #FFB38A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--warm-orange);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-brown);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--warm-orange);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(62, 39, 35, 0.8), rgba(62, 39, 35, 0.8)), 
+                        url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            display: inline-block;
+            background-color: var(--cream);
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--warm-orange);
+            z-index: 0;
+        }
+        
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .policy-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .policy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background-color: var(--warm-orange);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-header h3 {
+            font-size: 1.5rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-body ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--warm-orange);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--light-orange);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--warm-orange);
+            color: var(--warm-orange);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--warm-orange);
+            color: white;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--warm-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .step h3 {
+            margin-bottom: 1rem;
+            color: var(--deep-red);
+        }
+        
+        .faq-section {
+            background-color: white;
+            padding: 4rem 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background-color: var(--cream);
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-question:hover {
+            background-color: #f5f0e1;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .contact-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-box h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+        }
+        
+        footer {
+            background-color: var(--dark-brown);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--warm-orange);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--warm-orange);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--warm-orange);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Bettsiddy<span>collections</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/about.html">About</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/contact.html">Contact</a></li>
+                        <li><a href="#">Account</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Returns & Exchanges</h1>
+            <p>We want you to be completely satisfied with your purchase. If you're not happy, we're here to help make it right.</p>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Policies</h2>
+            </div>
+            
+            <div class="policy-grid">
+                <div class="policy-card">
+                    <div class="card-header">
+                        <h3>Return Policy</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>30-day return policy on most items</li>
+                            <li>Items must be unused and in original condition</li>
+                            <li>Original tags and packaging must be intact</li>
+                            <li>Proof of purchase required</li>
+                        </ul>
+                        <a href="#" class="btn">Start a Return</a>
+                    </div>
+                </div>
+                
+                <div class="policy-card">
+                    <div class="card-header">
+                        <h3>Exchange Policy</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Free exchanges within 14 days</li>
+                            <li>Available for size/color changes</li>
+                            <li>Subject to product availability</li>
+                            <li>Original shipping fees non-refundable</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Request Exchange</a>
+                    </div>
+                </div>
+                
+                <div class="policy-card">
+                    <div class="card-header">
+                        <h3>Refund Policy</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Refunds processed within 5 business days</li>
+                            <li>Original shipping fees non-refundable</li>
+                            <li>Refund issued to original payment method</li>
+                            <li>Store credit option available</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content-section" style="background-color: #f9f5eb;">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Initiate Your Return</h3>
+                    <p>Log in to your account or use our guest portal to start your return or exchange process.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Package Your Item</h3>
+                    <p>Securely pack your item in its original packaging with all tags attached.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Ship It Back</h3>
+                    <p>Use the prepaid return label we provide or ship it back to us using your preferred carrier.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Receive Resolution</h3>
+                    <p>Once received, we'll process your return and issue your refund or ship your exchange.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#" class="btn">Begin Return Process</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does it take to process a return?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once we receive your returned item, we typically process returns within 3-5 business days. Refunds may take an additional 3-5 business days to appear in your account depending on your payment method and financial institution.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What items are not eligible for return?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For health and safety reasons, we cannot accept returns on intimate apparel, swimwear, earrings, and personalized/customized items unless they arrive damaged or defective. Final sale items are also not eligible for return.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I have to pay for return shipping?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We provide free return shipping for defective or incorrect items. For other returns, customers are responsible for return shipping costs unless you choose store credit, in which case we'll provide a prepaid return label.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I exchange an item for a different size or color?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer free exchanges within 14 days of delivery. Simply select the exchange option when initiating your return and choose the new item you'd like. Exchanges are subject to product availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What if my item arrives damaged or defective?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We're sorry to hear that! Please contact our customer service team within 7 days of delivery with photos of the damage/defect. We'll arrange for a free return and send you a replacement or issue a full refund, including original shipping costs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Need More Help?</h2>
+            </div>
+            
+            <div class="contact-box">
+                <h3>Contact Our Customer Care Team</h3>
+                <p>We're here to assist you with any questions about returns or exchanges.</p>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="order">Order Number (if applicable)</label>
+                        <input type="text" id="order">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject">
+                            <option value="return">Return Inquiry</option>
+                            <option value="exchange">Exchange Request</option>
+                            <option value="refund">Refund Status</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/hoodie.html">Hoodies</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/gem.html">Jewellery</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/bags.html">Bags</a></li>
+                        
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/contact.html">Contact Us</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/faq.html">FAQs</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/return.html">Returns & Exchanges</a></li>
+                    </ul>
+                </div>
+                
+            
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1A2WmeqZGG/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/bettsiddy?igsh=MTVxNHpuZDhjN3YwdA==&utm_source=ig_contact_invite"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        
+                    </div>
+                    <p style="margin-top: 1.5rem;">Sign up for our newsletter</p>
+                    <form style="margin-top: 0.5rem; display: flex;">
+                        <input type="email" placeholder="Your email" style="flex: 1; padding: 0.5rem; border: none; border-radius: 4px 0 0 4px;">
+                        <button type="submit" style="background-color: var(--warm-orange); color: white; border: none; padding: 0 1rem; border-radius: 0 4px 4px 0; cursor: pointer;">→</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Bettsiddy collections. All rights reserved. | <a href="https://solocho.github.io/bettsidddycollection/privacy.html" style="color: var(--warm-orange);">Privacy Policy</a> | <a href="https://solocho.github.io/bettsidddycollection/terms.html" style="color: var(--warm-orange);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Toggle the active class on the answer
+                answer.classList.toggle('active');
+                
+                // Rotate the icon
+                if (answer.classList.contains('active')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+                
+                // Close other open answers
+                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                    if (otherAnswer !== answer && otherAnswer.classList.contains('active')) {
+                        otherAnswer.classList.remove('active');
+                        otherAnswer.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
+        
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would typically send the form data to your server
+                // For this example, we'll just show an alert
+                alert('Thank you for your message! Our customer care team will respond within 24 hours.');
+                this.reset();
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
