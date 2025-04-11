@@ -1,446 +1,1977 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>BettSiddy Collections</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rochester&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        // Simulating a logged-in user
-        const userName = "John Doe"; // Replace with actual logged-in user data
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("user-name").textContent = userName;
-        });
-    </script>
+    <title>BettSiddy Collections - Luxury Fashion & Accessories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        :root {
+            --primary: #d4af37;
+            --secondary: #3E2723;
+            --accent: #D32F2F;
+            --light: #FFF8E1;
+            --dark: #1a1a1a;
+            --text: #333333;
+            --transition: all 0.3s ease-in-out;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        button {
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            background: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* ===== HEADER STYLES ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            transition: var(--transition);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        
+        .brand-name {
+            font-family: 'Rochester', cursive;
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--primary), #c0c0c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1.5px;
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        
+        .main-nav {
+            display: flex;
+            list-style: none;
+            margin-right: 20px;
+        }
+        
+        .main-nav li {
+            position: relative;
+            margin: 0 12px;
+        }
+        
+        .main-nav a {
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 0;
+            transition: var(--transition);
+        }
+        
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .main-nav li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+            padding: 8px 20px;
+        }
+        
+        .dropdown-menu a {
+            font-size: 13px;
+            text-transform: capitalize;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .dropdown-menu a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .action-icon {
+            font-size: 18px;
+            margin: 0 10px;
+            color: var(--text);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .action-icon:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .cart-count, .wishlist-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 22px;
+            background: none;
+            border: none;
+            color: var(--text);
+            margin-left: 15px;
+        }
+        
+        /* ===== HERO SLIDER ===== */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 80px);
+            min-height: 500px;
+            overflow: hidden;
+        }
+        
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: white;
+            max-width: 600px;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .slide-title {
+            font-size: clamp(28px, 5vw, 60px);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide-motto {
+            font-size: clamp(14px, 2vw, 18px);
+            font-weight: 500;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+        
+        .shop-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        
+        .shop-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .slider-arrow:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .slider-prev {
+            left: 20px;
+        }
+        
+        .slider-next {
+            right: 20px;
+        }
+        
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .service-card {
+            text-align: center;
+            padding: 25px 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+            background: var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), #f1c40f);
+            color: white;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+        
+        .service-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+        
+        .service-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* ===== PRODUCT SHOWCASE ===== */
+        .product-showcase {
+            padding: 60px 0;
+            background: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+        
+        .product-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .product-tab {
+            padding: 10px 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            color: var(--text);
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+            font-size: 13px;
+        }
+        
+        .product-tab.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .product-tab:hover:not(.active) {
+            color: var(--accent);
+        }
+        
+        .product-grid-container {
+            position: relative;
+            min-height: 600px;
+            overflow: hidden;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .product-grid.active {
+            opacity: 1;
+            transform: translateY(0);
+            position: relative;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-actions {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: white;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-category {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .product-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 15px;
+        }
+        
+        .old-price {
+            font-size: 12px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        
+        /* ===== FEATURED COLLECTIONS ===== */
+        .featured-collections {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .collection-card {
+            position: relative;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .collection-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .collection-card:hover .collection-image {
+            transform: scale(1.05);
+        }
+        
+        .collection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: white;
+        }
+        
+        .collection-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .collection-desc {
+            font-size: 13px;
+            margin-bottom: 15px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition) 0.1s;
+        }
+        
+        .collection-btn {
+            align-self: flex-start;
+            padding: 8px 20px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            border: none;
+            font-size: 13px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition) 0.2s;
+        }
+        
+        .collection-card:hover .collection-title,
+        .collection-card:hover .collection-desc,
+        .collection-card:hover .collection-btn {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* ===== CART SIDEBAR ===== */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .close-cart {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            height: 25px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-right: none;
+        }
+        
+        .remove-item {
+            color: #999;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        
+        .cart-total {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        .cart-total span {
+            color: var(--primary);
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .checkout-btn:hover {
+            background: var(--accent);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ===== WISHLIST FUNCTIONALITY ===== */
+        .wishlist-btn.active {
+            color: var(--accent);
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 50px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            font-size: 13px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .payment-method {
+            width: 50px;
+            height: 30px;
+            border-radius: 4px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px;
+        }
+        
+        .payment-method img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: calc(100vh - 80px);
+            background: white;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1050;
+            transition: var(--transition);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            left: 0;
+        }
+        
+        .mobile-nav {
+            list-style: none;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-nav a {
+            font-weight: 500;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .mobile-dropdown {
+            padding-left: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .mobile-dropdown.active {
+            max-height: 500px;
+        }
+        
+        .mobile-dropdown li {
+            margin-bottom: 10px;
+        }
+        
+        .mobile-dropdown a {
+            font-size: 14px;
+            border-bottom: none;
+        }
+        
+        .dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dropdown-toggle i {
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-toggle.active i {
+            transform: rotate(180deg);
+        }
+        
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 992px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                height: 70px;
+                padding: 0 15px;
+            }
+            
+            .brand-name {
+                font-size: 20px;
+            }
+            
+            .logo {
+                height: 35px;
+                width: 35px;
+            }
+            
+            .hero-slider {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .slide-content {
+                left: 5%;
+                right: 5%;
+                max-width: 90%;
+            }
+            
+            .shop-btn {
+                padding: 10px 25px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            
+            .product-image {
+                height: 180px;
+            }
+            
+            .collection-card {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .header {
+                height: 70px;
+            }
+            
+            .mobile-menu {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+            
+            .hero-slider {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-tabs {
+                justify-content: space-around;
+            }
+            
+            .product-tab {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
+            .cart-sidebar {
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="bighead">
-        <div class="header">
-            <div class="right">
-                <div>
-                    <img class="logo" src="logo.png" alt="Logo">
-                </div>
-                <div>
-                    <p class="logo-n">BettSiddy Collection</p>
-                </div>
-            </div>
-
-            <div class="middle">
-                
-                
-                <!-- Category Dropdown -->
-                
-            </div>
-
-            <div class="left">
-                <div class="hello">
-                    <p>Hello, <span id="user-name">Guest</span> |</p>
-                </div>
-
-                <div class="li-ca">
-                    <div class="like-con">
-                        <img class="like" src="like.svg" alt="Like">
-                    </div>
-                    <div class="cart-con">
-                        <img class="cart" src="cart.svg" alt="Cart">
-                    </div>
-                </div>
-
-                <!-- Currency Dropdown -->
-             
-            </div>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="logo.png" alt="BettSiddy Logo" class="logo">
+            <span class="brand-name">BettSiddy</span>
         </div>
+        
+        <nav class="nav-container">
+            <ul class="main-nav">
+                <li><a href="#">Home</a></li>
+                <li>
+                    <a href="#">Shop <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Bags</a></li>
+                        <li><a href="#">Hoodies</a></li>
+                        <li><a href="#">Jewelry</a></li>
+                    </ul>
+                </li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <div class="user-actions">
+                <button class="action-icon wishlist-btn" id="wishlist-btn">
+                    <i class="far fa-heart"></i>
+                    <span class="wishlist-count">0</span>
+                </button>
+                <button class="action-icon cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav">
+            <li><a href="#">Home</a></li>
+            <li>
+                <div class="dropdown-toggle">
+                    <a href="#">Shop</a>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="mobile-dropdown">
+                    <li><a href="#">Bags</a></li>
+                    <li><a href="#">Hoodies</a></li>
+                    <li><a href="#">Jewelry</a></li>
+                </ul>
+            </li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
     </div>
 
-    <div class="slider-container">
+    <!-- Hero Slider -->
+    <section class="hero-slider">
         <div class="slides">
+            <!-- Slide 1 -->
             <div class="slide">
-                <img src="selling/bag.png">
-                <div class="overlay"></div>
-                <div class="text">
-                    <h2>Bettsiddy Bags Collection</h2>
-                    <p class="motto">Luxury Handbags - Largest Range Available</p>
-                  <a href="https://solocho.github.io/bettsidddycollection/bags.html" target="_blank">
-  <button class="shop-btn">Shop Now</button>
-</a>
-
-
+                <img src="selling/bag.png" alt="Luxury Bags Collection">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">BettSiddy Bags</h1>
+                    <p class="slide-motto">Luxury Handbags - Largest Range Available</p>
+                    <button class="shop-btn">Shop Now</button>
                 </div>
             </div>
-    
-            <div class="slide">
-                <img src="selling/hoodie.png">
-                <div class="overlay"></div>
-                <div class="text">
-                    <h2>BettSiddy Hoodies Collection</h2>
-                    <p class="motto">Stylish and Comfortable Hoodies</p>
-                   <a href="https://solocho.github.io/bettsidddycollection/hoodie.html" target="_blank">
-  <button class="shop-btn">Shop Now</button>
-</a>
-
-
-                </div>
-            </div>
-    
-            <div class="slide">
-                <img src="selling/sneaker.png">
-                <div class="overlay"></div>
-                <div class="text">
-                    <h2>Bettsiddy Elegant Jewelry Collection</h2>
-<p class="motto">Timeless Beauty, Crafted to Perfection</p>
-
-                   <a href="https://solocho.github.io/bettsidddycollection/gem.html" target="_blank">
-  <button class="shop-btn">Shop Now</button>
-</a>
-
-
-                </div>
-            </div>
-        </div>
-    
-        <!-- Navigation Arrows -->
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
-    
-        <!-- Dots for Manual Navigation -->
-        <div class="dots-container">
-            <span class="dot" onclick="goToSlide(0)"></span>
-            <span class="dot" onclick="goToSlide(1)"></span>
-            <span class="dot" onclick="goToSlide(2)"></span>
-        </div>
-    </div>
-
-    <div class="menu-cons">
-        <div class="ship">
-            <div><img src="menu-con/shipping.png"></div>
-            <div><p class="first">Track Order</p></div>
-            <div><p class="second">24/7 Delivery</p></div>
-        </div>
-        <div class="transaction">
-            <div><img src="menu-con/transaction.png"></div>
-            <div><p class="first">Transactions</p></div>
-            <div></div>
-        </div>
-        <div class="support">
-            <div><img src="menu-con/call.png"></div>
-            <div class="first">24 HRS support </div>
-            <div class="second">contact our support team</div>
-        </div>
-    </div>
-    
-   
-    <div class="body-2">
-        <div class="b-2-l">
-            <!-- Hoodie Slider -->
-            <div class="b-2-l-u">
-                <div class="b-2-l-u-container">
-                    <div class="b-2-l-u-slide">
-                        <img src="hoodie/h1.png" alt="Hoodie 1">
-                        <div class="overlay">
-                            <h2>Premium Hoodie</h2>
-                            <p>Soft & Stylish</p>
-                        </div>
-                    </div>
-                    <div class="b-2-l-u-slide">
-                        <img src="hoodie/h2.png" alt="Hoodie 2">
-                        <div class="overlay">
-                            <h2>Winter Comfort</h2>
-                            <p>Cozy & Warm</p>
-                        </div>
-                    </div>
-                    <div class="b-2-l-u-slide">
-                        <img src="hoodie/h3.png" alt="Hoodie 3">
-                        <div class="overlay">
-                            <h2>Casual Look</h2>
-                            <p>Everyday Wear</p>
-                        </div>
-                    </div>
-                    <div class="b-2-l-u-slide">
-                        <img src="hoodie/h4.png" alt="Hoodie 4">
-                        <div class="overlay">
-                            <h2>Modern Style</h2>
-                            <p>Trendsetter</p>
-                        </div>
-                    </div>
-                    <div class="b-2-l-u-slide">
-                        <img src="hoodie/h1.png" alt="Hoodie 5">
-                        <div class="overlay">
-                            <h2>Urban Hoodie</h2>
-                            <p>Streetwear Classic</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="b-2-l-u-prev">&#10094;</button>
-                <button class="b-2-l-u-next">&#10095;</button>
-                <div class="b-2-l-u-dots"></div>
-            </div>
-    
-            <!-- Jewelry Slider -->
-            <div class="b-2-l-l">
-                <div class="b-2-l-l-container">
-                    <div class="b-2-l-l-slide">
-                        <img src="jewels/j1.png" alt="Jewelry 1">
-                        <div class="overlay">
-                            <h2>Elegant Necklace</h2>
-                            <p>Timeless Beauty</p>
-                        </div>
-                    </div>
-                    <div class="b-2-l-l-slide">
-                        <img src="jewels/j2.png" alt="Jewelry 2">
-                        <div class="overlay">
-                            <h2>Luxury Bracelet</h2>
-                            <p>Pure Gold</p>
-                        </div>
-                    </div>
-                    <div class="b-2-l-l-slide">
-                        <img src="jewels/j3.png" alt="Jewelry 3">
-                        <div class="overlay">
-                            <h2>Diamond Ring</h2>
-                            <p>Forever Shine</p>
-                        </div>
-                    </div>
-                    <div class="b-2-l-l-slide">
-                        <img src="jewels/j4.png" alt="Jewelry 4">
-                        <div class="overlay">
-                            <h2>Stylish Earrings</h2>
-                            <p>Perfect Sparkle</p>
-                        </div>
-                    </div>
-                    <div class="b-2-l-l-slide">
-                        <img src="jewels/j5.png" alt="Jewelry 5">
-                        <div class="overlay">
-                            <h2>Royal Pendant</h2>
-                            <p>Grace & Elegance</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="b-2-l-l-prev">&#10094;</button>
-                <button class="b-2-l-l-next">&#10095;</button>
-                <div class="b-2-l-l-dots"></div>
-            </div>
-        </div>
-    
-        <!-- Bag Slider -->
-        <div class="b-2-r">
-            <div class="b-2-r-container">
-                <div class="b-2-r-slide">
-                    <img src="bags/b1.png" alt="Bag 1">
-                    <div class="overlay">
-                        <h2>Leather Backpack</h2>
-                        <p>Premium Quality</p>
-                    </div>
-                </div>
-                <div class="b-2-r-slide">
-                    <img src="bags/b2.png" alt="Bag 2">
-                    <div class="overlay">
-                        <h2>Fashion Tote</h2>
-                        <p>Elegant & Chic</p>
-                    </div>
-                </div>
-                <div class="b-2-r-slide">
-                    <img src="bags/b1.png" alt="Bag 3">
-                    <div class="overlay">
-                        <h2>Modern Satchel</h2>
-                        <p>Everyday Essential</p>
-                    </div>
-                </div>
-                <div class="b-2-r-slide">
-                    <img src="bags/b1.png" alt="Bag 4">
-                    <div class="overlay">
-                        <h2>Classic Handbag</h2>
-                        <p>Stylish & Trendy</p>
-                    </div>
-                </div>
-                <div class="b-2-r-slide">
-                    <img src="bags/b2.png" alt="Bag 5">
-                    <div class="overlay">
-                        <h2>Travel Duffle</h2>
-                        <p>Spacious & Durable</p>
-                    </div>
-                </div>
-            </div>
-            <button class="b-2-r-prev">&#10094;</button>
-            <button class="b-2-r-next">&#10095;</button>
-            <div class="b-2-r-dots"></div>
-        </div>
-    </div>
-    
-
-    <div class="body-3">
-        <div class="b-3-u"><p>FEATURED PRODUCTS</p></div>
-    
-        <!-- Navigation Tabs -->
-        <div class="b-3-l">
-            <p class="tab active" data-category="featured">FEATURED</p>
-            <p class="tab" data-category="latest">LATEST</p>
-            <p class="tab" data-category="special">SPECIAL</p>
-        </div>
-    
-        <!-- Image Container -->
-        <div class="b-3-images">
-            <div class="image-container" id="featured">
-                <div class="image-box">
-                    <img src="hoodie/h1.png">
-                    <h2>Premium Hoodie</h2>
-                    <p class="price">KES49.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="hoodie/h2.png">
-                    <h2>Winter Comfort</h2>
-                    <p class="price">KES59.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="hoodie/h3.png">
-                    <h2>Casual Look</h2>
-                    <p class="price">$44.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="hoodie/h4.png">
-                    <h2>Modern Style</h2>
-                    <p class="price">KES64.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="hoodie/h1.png">
-                    <h2>Urban Hoodie</h2>
-                    <p class="price">KES54.99</p>
-                </div>
-            </div>
-    
-            <div class="image-container" id="latest">
-                <div class="image-box">
-                    <img src="bags/b1.png">
-                    <h2>Leather Backpack</h2>
-                    <p class="price">KES79.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="bags/b2.png">
-                    <h2>Fashion Tote</h2>
-                    <p class="price">KES69.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="bags/b1.png">
-                    <h2>Modern Satchel</h2>
-                    <p class="price">KES59.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="bags/b2.png">
-                    <h2>Classic Handbag</h2>
-                    <p class="price">KES89.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="bags/b1.png">
-                    <h2>Travel Duffle</h2>
-                    <p class="price">KES99.99</p>
-                </div>
-            </div>
-    
-            <div class="image-container" id="special">
-                <div class="image-box">
-                    <img src="jewels/j1.png">
-                    <h2>Elegant Necklace</h2>
-                    <p class="price">KES129.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="jewels/j2.png">
-                    <h2>Luxury Bracelet</h2>
-                    <p class="price">KES199.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="jewels/j3.png">
-                    <h2>Diamond Ring</h2>
-                    <p class="price">KES499.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="jewels/j4.png">
-                    <h2>Stylish Earrings</h2>
-                    <p class="price">KES149.99</p>
-                </div>
-                <div class="image-box">
-                    <img src="jewels/j5.png">
-                    <h2>Royal Pendant</h2>
-                    <p class="price">KES179.99</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    <div class="body-4">
-        <div class="b-4-l">
-            <p class="news">NEWSLETTER</p>
-            <p class="n-m">SIGN UP TO OUR NEWSLETTER AND SAVE</p>
-            <p class="n-m-m">20% OFF FOR YOUR NEXT PURCHASE</p>
-        </div>
-        <div class="b-4-r">
-            <input class="email" type="email" placeholder="Enter your email">
-            <button class="subscribe-btn">SUBSCRIBE</button>
             
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="selling/hoodie.png" alt="Stylish Hoodies">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">Premium Hoodies</h1>
+                    <p class="slide-motto">Stylish and Comfortable for Every Occasion</p>
+                    <button class="shop-btn">Shop Now</button>
+                </div>
+            </div>
             
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="selling/sneaker.png" alt="Elegant Jewelry">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">Elegant Jewelry</h1>
+                    <p class="slide-motto">Timeless Beauty, Crafted to Perfection</p>
+                    <button class="shop-btn">Shop Now</button>
+                </div>
+            </div>
         </div>
+        
+        <!-- Slider Navigation -->
+        <button class="slider-arrow slider-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow slider-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-container">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="service-title">Free Shipping</h3>
+                    <p class="service-desc">Free delivery on all orders over $100</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="service-title">Easy Returns</h3>
+                    <p class="service-desc">30-day return policy for all items</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="service-title">24/7 Support</h3>
+                    <p class="service-desc">Customer service always available</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="service-title">Secure Payment</h3>
+                    <p class="service-desc">100% secure payment system</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="product-showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+            </div>
+            
+            <div class="product-tabs">
+                <div class="product-tab active" data-category="featured">Featured</div>
+                <div class="product-tab" data-category="latest">Latest</div>
+                <div class="product-tab" data-category="special">Special</div>
+            </div>
+            
+            <div class="product-grid-container">
+                <!-- Featured Products Grid -->
+                <div class="product-grid active" id="featured-products">
+                    <!-- Product 1 -->
+                    <div class="product-card" data-id="1">
+                        <div class="product-badge">New</div>
+                        <div class="product-image">
+                            <img src="hoodie/h1.png" alt="Premium Hoodie">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Hoodies</div>
+                            <h3 class="product-name">Premium Hoodie</h3>
+                            <div class="product-price">KES 49.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-toggle" data-id="1">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-id="1">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card" data-id="2">
+                        <div class="product-image">
+                            <img src="bags/b1.png" alt="Leather Backpack">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Bags</div>
+                            <h3 class="product-name">Leather Backpack</h3>
+                            <div class="product-price">KES 79.99 <span class="old-price">$99.99</span></div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-toggle" data-id="2">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-id="2">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card" data-id="3">
+                        <div class="product-badge">-20%</div>
+                        <div class="product-image">
+                            <img src="jewels/j1.png" alt="Elegant Necklace">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Jewelry</div>
+                            <h3 class="product-name">Elegant Necklace</h3>
+                            <div class="product-price">KES 129.99 <span class="old-price">$159.99</span></div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-toggle" data-id="3">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-id="3">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card" data-id="4">
+                        <div class="product-image">
+                            <img src="hoodie/h2.png" alt="Winter Comfort Hoodie">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Hoodies</div>
+                            <h3 class="product-name">Winter Comfort</h3>
+                            <div class="product-price">KES 59.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-toggle" data-id="4">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-id="4">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Latest Products Grid (hidden by default) -->
+                <div class="product-grid" id="latest-products">
+                    <!-- Product 1 -->
+                    <div class="product-card" data-id="5">
+                        <div class="product-badge">Bestseller</div>
+                        <div class="product-image">
+                            <img src="bags/b2.png" alt="Fashion Tote">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Bags</div>
+                            <h3 class="product-name">Fashion Tote</h3>
+                            <div class="product-price">KES 69.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-toggle" data-id="5">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-id="5">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card" data-id="6">
+                        <div class="product-image">
+                            <img src="jewels/j2.png" alt="Luxury Bracelet">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Jewelry</div>
+                            <h3 class="product-name">Luxury Bracelet</h3>
+                            <div class="product-price">KES 199.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-toggle" data-id="6">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-id="6">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Special Products Grid (hidden by default) -->
+                <div class="product-grid" id="special-products">
+                    <!-- Product 1 -->
+                    <div class="product-card" data-id="7">
+                        <div class="product-badge">-30%</div>
+                        <div class="product-image">
+                            <img src="bags/b4.png" alt="Designer Clutch">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Bags</div>
+                            <h3 class="product-name">Designer Clutch</h3>
+                            <div class="product-price">KES 89.99 <span class="old-price">$129.99</span></div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-toggle" data-id="7">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-id="7">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="featured-collections" id="collections">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Collections</h2>
+            </div>
+            
+            <div class="collection-grid">
+                <!-- Collection 1 -->
+                <div class="collection-card">
+                    <img src="selling/bag.png" alt="Bags Collection" class="collection-image">
+                    <div class="collection-overlay">
+                        <h3 class="collection-title">Bags</h3>
+                        <p class="collection-desc">Discover our premium collection of luxury handbags</p>
+                        <button class="collection-btn">View Collection</button>
+                    </div>
+                </div>
+                
+                <!-- Collection 2 -->
+                <div class="collection-card">
+                    <img src="selling/hoodie.png" alt="Hoodies Collection" class="collection-image">
+                    <div class="collection-overlay">
+                        <h3 class="collection-title">Hoodies</h3>
+                        <p class="collection-desc">Stylish and comfortable for any occasion</p>
+                        <button class="collection-btn">View Collection</button>
+                    </div>
+                </div>
+                
+                <!-- Collection 3 -->
+                <div class="collection-card">
+                    <img src="selling/sneaker.png" alt="Jewelry Collection" class="collection-image">
+                    <div class="collection-overlay">
+                        <h3 class="collection-title">Jewelry</h3>
+                        <p class="collection-desc">Elegant pieces crafted to perfection</p>
+                        <button class="collection-btn">View Collection</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            Total: <span id="cart-total">KES0.00</span>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
     </div>
     
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
 
-    <div class="body-5">
-        <!-- Footer Headings -->
-        <div class="b-5-f">
-            <p class="c">Company</p>
-            <p class="q">Questions</p>
-            <p class="l">Useful Links</p>
-            <p class="co">Connect with Us</p>
-        </div>
-    
-        <!-- Footer Links -->
-        <div class="b-5-s">
-            <div class="company">
-                <p><a href="#">About Us</a></p>
-                <p><a href="#">Contact Us</a></p>
-                <p><a href="#">Privacy Policy</a></p>
-                <p><a href="#">Terms & Conditions</a></p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1 -->
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Bags</a></li>
+                        <li><a href="#">Hoodies</a></li>
+                        <li><a href="#">Jewelry</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                    
+                    <h3 style="margin-top: 20px;">Payment Methods</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <img src="icons/visa.png" alt="Visa">
+                        </div>
+                        <div class="payment-method">
+                            <img src="icons/mastercard.png" alt="Mastercard">
+                        </div>
+                        <div class="payment-method">
+                            <img src="icons/paypal.png" alt="PayPal">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="questions">
-                <p><a href="#">Help & Support</a></p>
-                <p><a href="#">Track Order</a></p>
-                <p><a href="#">Return Policy</a></p>
-                <p><a href="#">Shipping Info</a></p>
-                <p><a href="#">Order History</a></p>
-            </div>
-            <div class="links">
-                <p><a href="#">Gift Cards</a></p>
-                <p><a href="#">Size Chart</a></p>
-                <p><a href="#">My Account</a></p>
-                <p><a href="#">Our Location</a></p>
-                <p><a href="#">FAQs</a></p>
-            </div>
-            <!-- Social Media -->
-            <div class="connect">
-                <a href="#"><img src="icons/insta.jpg" alt="Instagram"></a>
-                <a href="#"><img src="icons/face.png" alt="Facebook"></a>
-                <a href="mailto:example@email.com"><img src="icons/mail.jpg" alt="Email"></a>
-                <a href="tel:+123456789"><img src="icons/call.png" alt="Contact"></a>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 BettSiddy Collections. All Rights Reserved.</p>
             </div>
         </div>
-    
-        <!-- Payment Methods -->
-        <div class="b-5-t">
-            <img src="icons/paypal.png" alt="PayPal">
-            <img src="icons/amaon.png" alt="Amazon Pay">
-            <img src="icons/visa.png" alt="Visa">
-            <img src="icons/master.jpg" alt="MasterCard">
-            <img src="icons/gpay.jpg" alt="Stripe">
-        </div>
-    
-        <!-- Footer Bottom -->
-        <div class="b-5-fo">
-            <p>Bettsiddy collections © 2025 | All Rights Reserved</p>
-        </div>
-    </div>
-    
-    
-    
-    <script src="index.js"></script>
+    </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Product Data
+            const products = {
+                1: { name: "Premium Hoodie", price: 49.99, category: "special", image: "hoodie/h1.png" },
+                2: { name: "Leather Backpack", price: 79.99, category: "Bags", image: "bags/b1.png" },
+                3: { name: "Elegant Necklace", price: 129.99, category: "Jewelry", image: "jewels/j1.png" },
+                4: { name: "Winter Comfort", price: 59.99, category: "Hoodies", image: "hoodie/h2.png" },
+                5: { name: "Fashion Tote", price: 69.99, category: "Bags", image: "bags/b2.png" },
+                6: { name: "Luxury Bracelet", price: 199.99, category: "Jewelry", image: "jewels/j2.png" },
+                7: { name: "Designer Clutch", price: 89.99, category: "Bags", image: "bags/b4.png" }
+            };
+            
+            // State Management
+            let state = {
+                cart: {},
+                wishlist: [],
+                slideIndex: 0,
+                mobileMenuOpen: false,
+                cartOpen: false,
+                currentProductTab: "featured"
+            };
+            
+            // DOM Elements
+            const elements = {
+                mobileMenuBtn: document.getElementById('mobile-menu-btn'),
+                mobileMenu: document.getElementById('mobile-menu'),
+                cartBtn: document.getElementById('cart-btn'),
+                closeCart: document.getElementById('close-cart'),
+                cartSidebar: document.getElementById('cart-sidebar'),
+                overlay: document.getElementById('overlay'),
+                cartItems: document.getElementById('cart-items'),
+                cartTotal: document.getElementById('cart-total'),
+                cartCount: document.querySelector('.cart-count'),
+                wishlistBtn: document.getElementById('wishlist-btn'),
+                wishlistCount: document.querySelector('.wishlist-count'),
+                dropdownToggles: document.querySelectorAll('.dropdown-toggle'),
+                productTabs: document.querySelectorAll('.product-tab'),
+                wishlistButtons: document.querySelectorAll('.wishlist-toggle'),
+                addToCartButtons: document.querySelectorAll('.add-to-cart'),
+                featuredProducts: document.getElementById('featured-products'),
+                latestProducts: document.getElementById('latest-products'),
+                specialProducts: document.getElementById('special-products')
+            };
+            
+            // Initialize
+            function init() {
+                loadState();
+                setupEventListeners();
+                startSlider();
+                updateUI();
+                setupSmoothScrolling();
+            }
+            
+            // Load state from localStorage
+            function loadState() {
+                const savedState = localStorage.getItem('bettSiddyState');
+                if (savedState) {
+                    state = JSON.parse(savedState);
+                }
+            }
+            
+            // Save state to localStorage
+            function saveState() {
+                localStorage.setItem('bettSiddyState', JSON.stringify(state));
+            }
+            
+            // Setup event listeners
+            function setupEventListeners() {
+                // Mobile menu toggle
+                elements.mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+                
+                // Cart toggle
+                elements.cartBtn.addEventListener('click', openCart);
+                elements.closeCart.addEventListener('click', closeCart);
+                elements.overlay.addEventListener('click', closeCart);
+                
+                // Dropdown toggles
+                elements.dropdownToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function() {
+                        const dropdown = this.parentElement.querySelector('.mobile-dropdown');
+                        this.classList.toggle('active');
+                        dropdown.classList.toggle('active');
+                    });
+                });
+                
+                // Product tabs
+                elements.productTabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const category = this.getAttribute('data-category');
+                        switchProductTab(category);
+                    });
+                });
+                
+                // Wishlist buttons
+                elements.wishlistButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        toggleWishlist(productId);
+                    });
+                });
+                
+                // Add to cart buttons
+                elements.addToCartButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        addToCart(productId);
+                    });
+                });
+            }
+            
+            // Setup smooth scrolling
+            function setupSmoothScrolling() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        // Skip dropdown toggles
+                        if (this.classList.contains('dropdown-toggle')) return;
+                        
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            // Switch product tab
+            function switchProductTab(category) {
+                // Update active tab
+                elements.productTabs.forEach(tab => tab.classList.remove('active'));
+                document.querySelector(`.product-tab[data-category="${category}"]`).classList.add('active');
+                
+                // Hide all product grids
+                elements.featuredProducts.classList.remove('active');
+                elements.latestProducts.classList.remove('active');
+                elements.specialProducts.classList.remove('active');
+                
+                // Show the selected one with animation
+                setTimeout(() => {
+                    document.getElementById(`${category}-products`).classList.add('active');
+                }, 10);
+                
+                state.currentProductTab = category;
+                saveState();
+            }
+            
+            // Toggle mobile menu
+            function toggleMobileMenu() {
+                state.mobileMenuOpen = !state.mobileMenuOpen;
+                elements.mobileMenu.classList.toggle('active', state.mobileMenuOpen);
+                elements.overlay.classList.toggle('active', state.mobileMenuOpen);
+                updateUI();
+            }
+            
+            // Open cart
+            function openCart() {
+                state.cartOpen = true;
+                elements.cartSidebar.classList.add('active');
+                elements.overlay.classList.add('active');
+                renderCart();
+            }
+            
+            // Close cart
+            function closeCart() {
+                state.cartOpen = false;
+                state.mobileMenuOpen = false;
+                elements.cartSidebar.classList.remove('active');
+                elements.mobileMenu.classList.remove('active');
+                elements.overlay.classList.remove('active');
+            }
+            
+            // Toggle wishlist
+            function toggleWishlist(productId) {
+                const index = state.wishlist.indexOf(productId);
+                if (index === -1) {
+                    state.wishlist.push(productId);
+                } else {
+                    state.wishlist.splice(index, 1);
+                }
+                
+                // Toggle active class on button
+                const button = document.querySelector(`.wishlist-toggle[data-id="${productId}"]`);
+                if (button) button.classList.toggle('active', index === -1);
+                
+                saveState();
+                updateUI();
+            }
+            
+            // Add to cart
+            function addToCart(productId) {
+                if (state.cart[productId]) {
+                    state.cart[productId].quantity += 1;
+                } else {
+                    state.cart[productId] = {
+                        product: products[productId],
+                        quantity: 1
+                    };
+                }
+                
+                saveState();
+                updateUI();
+                
+                // If cart is open, update it
+                if (state.cartOpen) {
+                    renderCart();
+                }
+            }
+            
+            // Remove from cart
+            function removeFromCart(productId) {
+                delete state.cart[productId];
+                saveState();
+                updateUI();
+                renderCart();
+            }
+            
+            // Update cart item quantity
+            function updateCartQuantity(productId, quantity) {
+                if (quantity <= 0) {
+                    removeFromCart(productId);
+                    return;
+                }
+                
+                state.cart[productId].quantity = quantity;
+                saveState();
+                updateUI();
+                renderCart();
+            }
+            
+            // Render cart
+            function renderCart() {
+                let cartHTML = '';
+                let total = 0;
+                
+                for (const productId in state.cart) {
+                    const item = state.cart[productId];
+                    const itemTotal = item.product.price * item.quantity;
+                    total += itemTotal;
+                    
+                    cartHTML += `
+                        <div class="cart-item">
+                            <img src="${item.product.image}" alt="${item.product.name}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h4 class="cart-item-name">${item.product.name}</h4>
+                                <div class="cart-item-price">KES${item.product.price.toFixed(2)}</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn minus" data-id="${productId}">-</button>
+                                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${productId}">
+                                    <button class="quantity-btn plus" data-id="${productId}">+</button>
+                                </div>
+                                <div class="remove-item" data-id="${productId}">Remove</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                elements.cartItems.innerHTML = cartHTML || '<p>Your cart is empty</p>';
+                elements.cartTotal.textContent = `KES${total.toFixed(2)}`;
+                
+                // Add event listeners to new cart elements
+                document.querySelectorAll('.minus').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        updateCartQuantity(productId, state.cart[productId].quantity - 1);
+                    });
+                });
+                
+                document.querySelectorAll('.plus').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        updateCartQuantity(productId, state.cart[productId].quantity + 1);
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-input').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const productId = this.getAttribute('data-id');
+                        updateCartQuantity(productId, parseInt(this.value));
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        removeFromCart(productId);
+                    });
+                });
+            }
+            
+            // Update UI counters
+            function updateUI() {
+                // Update cart count
+                const cartCount = Object.keys(state.cart).reduce((total, productId) => {
+                    return total + state.cart[productId].quantity;
+                }, 0);
+                
+                elements.cartCount.textContent = cartCount;
+                
+                // Update wishlist count
+                elements.wishlistCount.textContent = state.wishlist.length;
+                
+                // Update wishlist buttons
+                elements.wishlistButtons.forEach(button => {
+                    const productId = button.getAttribute('data-id');
+                    button.classList.toggle('active', state.wishlist.includes(productId));
+                });
+            }
+            
+            // Slider functionality
+            function startSlider() {
+                const slides = document.querySelectorAll('.slide');
+                const dots = document.querySelectorAll('.slider-dot');
+                const totalSlides = slides.length;
+                
+                function showSlide(index) {
+                    // Wrap around if at ends
+                    if (index >= totalSlides) state.slideIndex = 0;
+                    if (index < 0) state.slideIndex = totalSlides - 1;
+                    
+                    // Move slides
+                    document.querySelector('.slides').style.transform = `translateX(-${state.slideIndex * 100}%)`;
+                    
+                    // Update dots
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[state.slideIndex].classList.add('active');
+                    
+                    // Reset animations
+                    const slideContent = slides[state.slideIndex].querySelector('.slide-content');
+                    slideContent.style.animation = 'none';
+                    void slideContent.offsetWidth; // Trigger reflow
+                    slideContent.style.animation = 'fadeInUp 1s ease-out';
+                }
+                
+                // Auto slide change
+                let slideInterval = setInterval(() => {
+                    state.slideIndex++;
+                    showSlide(state.slideIndex);
+                }, 5000);
+                
+                // Manual navigation
+                document.querySelector('.slider-next').addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    state.slideIndex++;
+                    showSlide(state.slideIndex);
+                    slideInterval = setInterval(() => {
+                        state.slideIndex++;
+                        showSlide(state.slideIndex);
+                    }, 5000);
+                });
+                
+                document.querySelector('.slider-prev').addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    state.slideIndex--;
+                    showSlide(state.slideIndex);
+                    slideInterval = setInterval(() => {
+                        state.slideIndex++;
+                        showSlide(state.slideIndex);
+                    }, 5000);
+                });
+                
+                // Dot navigation
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        clearInterval(slideInterval);
+                        state.slideIndex = index;
+                        showSlide(state.slideIndex);
+                        slideInterval = setInterval(() => {
+                            state.slideIndex++;
+                            showSlide(state.slideIndex);
+                        }, 5000);
+                    });
+                });
+                
+                // Initialize
+                showSlide(state.slideIndex);
+            }
+            
+            // Initialize the app
+            init();
+        });
+    </script>
 </body>
 </html>
