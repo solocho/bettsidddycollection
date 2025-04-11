@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --warm-orange: #FF914D;
+            --dark-brown: #3E2723;
+            --cream: #FFF8E1;
+            --deep-red: #D32F2F;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            min-height: 600px;
+            display: flex;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            background: white;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .left-side {
+            flex: 1;
+            background: linear-gradient(135deg, var(--warm-orange), var(--deep-red));
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .left-side::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .left-side::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .welcome-text {
+            text-align: center;
+            z-index: 1;
+            animation: slideInLeft 1s ease-in-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .welcome-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .welcome-text p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .right-side {
+            flex: 1;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            animation: slideInRight 1s ease-in-out;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-header h2 {
+            font-size: 2rem;
+            color: var(--dark-brown);
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: #777;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-brown);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .form-group input:focus {
+            border-color: var(--warm-orange);
+            box-shadow: 0 0 0 3px rgba(255, 145, 77, 0.2);
+            outline: none;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 20px;
+            top: 42px;
+            color: #777;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .password-toggle:hover {
+            color: var(--warm-orange);
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 8px;
+        }
+        
+        .forgot-password a {
+            color: var(--deep-red);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .forgot-password a:hover {
+            color: var(--dark-brown);
+            text-decoration: underline;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--warm-orange);
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 145, 77, 0.4);
+        }
+        
+        .btn-primary:hover {
+            background-color: #ff7d33;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 145, 77, 0.6);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--dark-brown);
+            border: 2px solid var(--dark-brown);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--dark-brown);
+            color: white;
+        }
+        
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .social-login p {
+            margin-bottom: 20px;
+            position: relative;
+            color: #777;
+        }
+        
+        .social-login p::before,
+        .social-login p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: #ddd;
+        }
+        
+        .social-login p::before {
+            left: 0;
+        }
+        
+        .social-login p::after {
+            right: 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+            color: var(--dark-brown);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facebook:hover {
+            background: #3b5998;
+            color: white;
+        }
+        
+        .google:hover {
+            background: #db4437;
+            color: white;
+        }
+        
+        .twitter:hover {
+            background: #1da1f2;
+            color: white;
+        }
+        
+        .switch-form {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+        
+        .switch-form a {
+            color: var(--deep-red);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .switch-form a:hover {
+            color: var(--dark-brown);
+            text-decoration: underline;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 30%;
+            animation-delay: 4s;
+        }
+        
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .left-side, .right-side {
+                flex: none;
+                width: 100%;
+            }
+            
+            .left-side {
+                padding: 40px 20px;
+            }
+            
+            .right-side {
+                padding: 40px 20px;
+            }
+            
+            .form-container {
+                max-width: 100%;
+            }
+        }
+        
+        /* Toggle between login and signup */
+        .signup-form {
+            display: none;
+        }
+        
+        /* Show active form */
+        .active-form {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <div class="welcome-text">
+                <h1>Welcome Back!</h1>
+                <p>Discover amazing products and exclusive deals just for you. Sign in to access your personalized shopping experience.</p>
+                <p>New to our store? Join us today and get 15% off your first order!</p>
+            </div>
+        </div>
+        
+        <div class="right-side">
+            <!-- Login Form -->
+            <div class="form-container login-form active-form">
+                <div class="form-header">
+                    <h2>Sign In</h2>
+                    <p>Welcome back! Please enter your details</p>
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                        <i class="fas fa-eye password-toggle" id="toggle-login-password"></i>
+                    </div>
+                    
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-me">
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                        <div class="forgot-password">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                    
+                    <div class="social-login">
+                        <p>Or sign in with</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="switch-form">
+                        <p>Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Signup Form -->
+            <div class="form-container signup-form">
+                <div class="form-header">
+                    <h2>Create Account</h2>
+                    <p>Join us today and start your shopping journey</p>
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                        <i class="fas fa-eye password-toggle" id="toggle-signup-password"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Confirm Password</label>
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+                        <i class="fas fa-eye password-toggle" id="toggle-confirm-password"></i>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    
+                    <div class="social-login">
+                        <p>Or sign up with</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="switch-form">
+                        <p>Already have an account? <a href="#" id="show-login">Sign in</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between login and signup forms
+        document.getElementById('show-signup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.login-form').classList.remove('active-form');
+            document.querySelector('.signup-form').classList.add('active-form');
+        });
+        
+        document.getElementById('show-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.signup-form').classList.remove('active-form');
+            document.querySelector('.login-form').classList.add('active-form');
+        });
+        
+        // Add floating animation to the container
+        const container = document.querySelector('.container');
+        
+        function floatContainer() {
+            const rotation = Math.sin(Date.now() / 2000) * 0.5;
+            const translateY = Math.sin(Date.now() / 1500) * 5;
+            container.style.transform = `rotate(${rotation}deg) translateY(${translateY}px)`;
+            requestAnimationFrame(floatContainer);
+        }
+        
+        floatContainer();
+        
+        // Password toggle functionality
+        function setupPasswordToggle(toggleId, inputId) {
+            const toggle = document.getElementById(toggleId);
+            const input = document.getElementById(inputId);
+            
+            toggle.addEventListener('click', function() {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    toggle.classList.remove('fa-eye');
+                    toggle.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    toggle.classList.remove('fa-eye-slash');
+                    toggle.classList.add('fa-eye');
+                }
+            });
+        }
+        
+        // Setup password toggles
+        setupPasswordToggle('toggle-login-password', 'login-password');
+        setupPasswordToggle('toggle-signup-password', 'signup-password');
+        setupPasswordToggle('toggle-confirm-password', 'signup-confirm-password');
+        
+        // Add input focus effects
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                const icon = this.parentElement.querySelector('i:not(.password-toggle)');
+                if (icon) {
+                    icon.style.color = 'var(--warm-orange)';
+                }
+            });
+            
+            input.addEventListener('blur', function() {
+                const icon = this.parentElement.querySelector('i:not(.password-toggle)');
+                if (icon) {
+                    icon.style.color = '#777';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

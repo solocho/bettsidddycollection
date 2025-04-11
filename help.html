@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bettsiddy Collections - Help & Support</title>
+    <style>
+        :root {
+            --warm-orange: #FF914D;
+            --dark-brown: #3E2723;
+            --cream: #FFF8E1;
+            --deep-red: #D32F2F;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-brown);
+            background-color: var(--cream);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--dark-brown);
+            color: var(--cream);
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 5px solid var(--warm-orange);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.8rem;
+        }
+        
+        .tagline {
+            font-style: italic;
+            margin-top: 10px;
+            color: var(--warm-orange);
+        }
+        
+        h2 {
+            color: var(--deep-red);
+            border-bottom: 2px solid var(--warm-orange);
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            color: var(--dark-brown);
+            margin-top: 25px;
+        }
+        
+        .faq-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            margin: 30px 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 20px;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            color: var(--deep-red);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--warm-orange);
+        }
+        
+        .faq-question.active::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            display: none;
+            padding-top: 10px;
+            padding-left: 15px;
+        }
+        
+        .contact-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            margin: 40px 0;
+            border-left: 5px solid var(--warm-orange);
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .contact-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--cream);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card h3 {
+            margin-top: 0;
+            color: var(--deep-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-card h3 i {
+            color: var(--warm-orange);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--warm-orange);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--deep-red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .contact-form {
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: var(--dark-brown);
+            color: var(--cream);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        .business-hours {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .hours-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .hours-table th, .hours-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .hours-table th {
+            background-color: var(--warm-orange);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-methods {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Bettsiddy Collections Support</h1>
+            <p class="tagline">We're here to help you with any questions or concerns</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="faq-section">
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I track my order?</div>
+                <div class="faq-answer">
+                    <p>Once your order has shipped, you'll receive a confirmation email with a tracking number. You can use this number to track your package through our website or the carrier's website. If you haven't received your tracking information within 3 business days, please contact our support team.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What is your return policy?</div>
+                <div class="faq-answer">
+                    <p>We accept returns within 30 days of purchase. Items must be in their original condition with all tags attached. To initiate a return, please visit our Returns Center or contact our customer service team. Refunds will be processed within 5-7 business days after we receive your returned item.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How can I change or cancel my order?</div>
+                <div class="faq-answer">
+                    <p>Orders can be modified or canceled within 1 hour of placement. After this window, we process orders quickly to ensure fast delivery, so changes may not be possible. Please contact us immediately if you need to change your order, and we'll do our best to accommodate your request.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Do you offer international shipping?</div>
+                <div class="faq-answer">
+                    <p>Yes! We ship to most countries worldwide. Shipping costs and delivery times vary by destination. During checkout, you'll see the available shipping options and costs for your location. Please note that international orders may be subject to customs fees and import taxes.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <div class="faq-answer">
+                    <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and Apple Pay. All transactions are securely processed through our encrypted payment system. We do not store your payment information after the transaction is complete.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="business-hours">
+            <h2><i class="far fa-clock"></i> Customer Support Hours</h2>
+            <table class="hours-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday - Friday</td>
+                        <td>9:00 AM - 7:00 PM (EST)</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>10:00 AM - 5:00 PM (EST)</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>Closed</td>
+                    </tr>
+                    <tr>
+                        <td>Holidays</td>
+                        <td>Hours may vary - check our announcements</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="contact-section">
+            <h2><i class="fas fa-headset"></i> Contact Our Support Team</h2>
+            <p>Have a question that isn't answered here? Our friendly support team is ready to help you.</p>
+            
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <h3><i class="fas fa-phone-alt"></i> Phone Support</h3>
+                    <p>Speak directly with a customer service representative during our business hours.</p>
+                    <p><strong>Phone:</strong> <a href="tel:+18005551234">+254746415318</a></p>
+                    <a href="tel:+18005551234" class="btn">Call Now</a>
+                </div>
+                
+                <div class="contact-card">
+                    <h3><i class="fas fa-envelope"></i> Email Support</h3>
+                    <p>Send us an email and we'll respond within 24 hours (usually much sooner!).</p>
+                    <p><strong>Email:</strong> <a href="mailto:support@bettsiddycollections.com">support@bettsiddycollections.com</a></p>
+                    <a href="mailto:support@bettsiddycollections.com" class="btn">Email Us</a>
+                </div>
+                
+                <div class="contact-card">
+                    <h3><i class="fas fa-comment-dots"></i> Live Chat</h3>
+                    <p>Chat with a support agent in real-time during business hours (button in lower right corner).</p>
+                    <p><strong>Available:</strong> Mon-Fri, 9am-7pm EST</p>
+                    <button class="btn" id="startChatBtn">Start Live Chat</button>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="supportForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic</option>
+                            <option value="order">Order Inquiry</option>
+                            <option value="return">Returns & Exchanges</option>
+                            <option value="product">Product Questions</option>
+                            <option value="shipping">Shipping Information</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-block">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Bettsiddy Collections. All rights reserved.</p>
+            <p>Your satisfaction is our top priority.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                if (question.classList.contains('active')) {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+        
+        // Form submission
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! Our team will respond to you shortly.');
+            this.reset();
+        });
+        
+        // Live chat button
+        document.getElementById('startChatBtn').addEventListener('click', function() {
+            const now = new Date();
+            const hours = now.getHours();
+            const day = now.getDay(); // 0 is Sunday, 1 is Monday, etc.
+            
+            // Check if it's business hours (Mon-Fri 9-7, Sat 10-5)
+            if ((day >= 1 && day <= 5 && hours >= 9 && hours < 19) || 
+                (day === 6 && hours >= 10 && hours < 17)) {
+                alert('Connecting you to a live chat agent now...');
+                // In a real implementation, this would open your chat widget
+            } else {
+                alert('Our live chat is currently unavailable. Please try during our business hours or use email/phone support.');
+            }
+        });
+    </script>
+</body>
+</html>

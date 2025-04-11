@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Bettsidddy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --primary-color: #e8b4b8;  /* Blush pink */
+            --secondary-color: #67595e;  /* Taupe */
+            --accent-color: #a49393;    /* Dusty rose */
+            --text-dark: #2d2d2d;        /* Dark gray */
+            --text-light: #6c757d;
+            --light-bg: #f9f5f5;         /* Light blush */
+            --dark-bg: #252525;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 8rem 2rem 10rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+            letter-spacing: 1px;
+        }
+        
+        .header-subtitle {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+            font-weight: 300;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: -5rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        .about-card {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            padding: 4rem;
+            margin-bottom: 5rem;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .mission, .vision {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 5px;
+            transition: var(--transition);
+            border-top: 3px solid var(--primary-color);
+        }
+        
+        .mission:hover, .vision:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Fashion Showcase */
+        .showcase-section {
+            margin: 6rem 0;
+        }
+        
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .showcase-item {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        .showcase-item:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.9s forwards; }
+        .showcase-item:nth-child(2) { animation: fadeInUp 0.8s ease-out 1.1s forwards; }
+        .showcase-item:nth-child(3) { animation: fadeInUp 0.8s ease-out 1.3s forwards; }
+        
+        .showcase-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .showcase-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .showcase-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem;
+            color: white;
+        }
+        
+        .showcase-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Values Section */
+        .values-section {
+            margin: 6rem 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 5px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            transform: translateY(30px);
+            opacity: 0;
+            text-align: center;
+            border-top: 3px solid var(--primary-color);
+        }
+        
+        .value-card:nth-child(1) { animation: fadeInUp 0.8s ease-out 1.1s forwards; }
+        .value-card:nth-child(2) { animation: fadeInUp 0.8s ease-out 1.3s forwards; }
+        .value-card:nth-child(3) { animation: fadeInUp 0.8s ease-out 1.5s forwards; }
+        .value-card:nth-child(4) { animation: fadeInUp 0.8s ease-out 1.7s forwards; }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light-bg);
+            color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .value-card:hover .value-icon {
+            background: var(--primary-color);
+            color: white;
+            transform: rotate(10deg);
+        }
+        
+        .value-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 6rem 2rem;
+            margin: 5rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        
+        .testimonial {
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -20px;
+            left: -15px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -15px;
+        }
+        
+        .testimonial-author {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+        }
+        
+        .author-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--dark-bg);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin: 5rem 0;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-text {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary-color);
+            color: var(--text-dark);
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: inline-block;
+        }
+        
+        .footer-tagline {
+            font-style: italic;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+            color: var(--text-dark);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 6rem 1rem 8rem;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .about-card {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1>Our Fashion Story</h1>
+            <p class="header-subtitle">Discover the passion, craftsmanship, and style that define Bettsiddy Collection</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="about-card">
+            <h2>Welcome to Bettsiddy Collection</h2>
+            <p>Founded in 2023 in the heart of Kenya, Nairobi, Bettysiddy collection began as a small boutique with a big dream: to make high fashion accessible without compromising on quality or ethics. What started as a single atelier has blossomed into a global brand beloved by fashion enthusiasts worldwide.</p>
+            
+            <p>At Bettsidddy collection, we believe fashion should be an expression of individuality while respecting our planet. Each collection is carefully curated to blend timeless elegance with contemporary trends, using sustainable materials and ethical production methods. Our designs have graced runways from kenya to the rest of the world, but our true pride comes from seeing our pieces become cherished staples in your wardrobe.</p>
+            
+            <div class="mission-vision">
+                <div class="mission">
+                    <h3>Our Mission</h3>
+                    <p>To empower individuals to express their unique style through ethically-made, high-quality fashion that doesn't compromise the planet or people.</p>
+                </div>
+                <div class="vision">
+                    <h3>Our Vision</h3>
+                    <p>To revolutionize the fashion industry by proving that style, sustainability, and social responsibility can coexist beautifully.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fashion Showcase -->
+        <div class="showcase-section">
+            <h2>Signature Collections</h2>
+            <p>Explore our most beloved lines that define the Chic Couture aesthetic</p>
+            
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <img src="selling/bag.png" alt="Evening Elegance Collection">
+                    <div class="showcase-overlay">
+                        <h3 class="showcase-title">Evening Elegance</h3>
+                        <p>Timeless gowns for unforgettable nights</p>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <img src="selling/hoodie.png" alt="Urban Minimalist Collection">
+                    <div class="showcase-overlay">
+                        <h3 class="showcase-title">Urban Minimalist</h3>
+                        <p>Effortless style for the modern woman</p>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <img src="selling/sneaker.png" alt="Sustainable Luxe Collection">
+                    <div class="showcase-overlay">
+                        <h3 class="showcase-title">Sustainable Luxe</h3>
+                        <p>Eco-conscious without compromising on luxury</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Values Section -->
+        <div class="values-section">
+            <h2>Our Fashion Philosophy</h2>
+            <p>The principles that guide every stitch and silhouette at Chic Couture</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="value-title">Sustainable Style</h3>
+                    <p>We prioritize eco-friendly fabrics and processes to minimize our environmental impact while maximizing style.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="value-title">Ethical Craft</h3>
+                    <p>Every garment is made by artisans receiving fair wages in safe working conditions.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="value-title">Timeless Quality</h3>
+                    <p>We create pieces designed to last beyond seasonal trends, using only the finest materials.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-title">Inclusive Beauty</h3>
+                    <p>Fashion should celebrate all bodies, which is why we design for diverse sizes and styles.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonials -->
+        <div class="testimonials-section">
+            <h2>Styled By Us, Loved By You</h2>
+            <p>Hear what our community says about Chic Couture</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">I've never received so many compliments on my wardrobe since discovering Chic Couture. Their pieces make me feel confident and stylish while aligning with my values.</p>
+                    <div class="testimonial-author">Sophie Laurent</div>
+                    <div class="author-role">Loyal Customer Since 2015</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Elevate Your Wardrobe?</h2>
+                <p class="cta-text">Join thousands of fashion-forward individuals who trust Chic Couture for their signature looks.</p>
+                <a href="/shop" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+       
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright">© <span id="currentYear"></span> Bettsiddy collection. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Simple testimonial slider
+            const testimonials = [
+                {
+                    text: "I've never received so many compliments on my wardrobe since discovering Bettsiddy collection. Their pieces make me feel confident and stylish while aligning with my values.",
+                    author: "Sophie Laurent",
+                    role: "Loyal Customer Since 2015"
+                },
+                {
+                    text: "As a fashion editor, I see hundreds of brands each season. Bettsiddy collection stands out for their impeccable craftsmanship and commitment to sustainability.",
+                    author: "Isabella Rossi",
+                    role: "Fashion Editor, Vogue Italia"
+                },
+                {
+                    text: "The quality of Chic Couture pieces surpasses brands at twice the price. I appreciate their transparency about materials and production.",
+                    author: "Mei Chen",
+                    role: "Sustainable Style Blogger"
+                }
+            ];
+            
+            let currentTestimonial = 0;
+            const testimonialElement = document.querySelector('.testimonial');
+            const textElement = testimonialElement.querySelector('.testimonial-text');
+            const authorElement = testimonialElement.querySelector('.testimonial-author');
+            const roleElement = testimonialElement.querySelector('.author-role');
+            
+            function showTestimonial(index) {
+                testimonialElement.style.opacity = 0;
+                
+                setTimeout(() => {
+                    textElement.textContent = testimonials[index].text;
+                    authorElement.textContent = testimonials[index].author;
+                    roleElement.textContent = testimonials[index].role;
+                    testimonialElement.style.opacity = 1;
+                }, 500);
+            }
+            
+            // Auto-rotate testimonials
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+            
+            // Initialize first testimonial
+            showTestimonial(0);
+            
+            // Add hover effect to value cards
+            const valueCards = document.querySelectorAll('.value-card');
+            valueCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const icon = card.querySelector('.value-icon');
+                    icon.style.transform = 'rotate(10deg) scale(1.1)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    const icon = card.querySelector('.value-icon');
+                    icon.style.transform = 'rotate(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

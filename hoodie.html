@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bettsiddy Collections - Premium Hoodies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hoodie.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span class="logo-text">BETTSIDDY</span>
+                <span class="logo-subtext">collections</span>
+            </div>
+            
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#shop" class="nav-link">Shop</a></li>
+                    <li><a href="#collections" class="nav-link">Collections</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <div class="search-box">
+                    <input type="text" placeholder="Search hoodies...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="icon wishlist-icon">
+                    <i class="far fa-heart"></i>
+                    <span class="icon-badge wishlist-count">0</span>
+                </div>
+                <div class="icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="icon-badge cart-count">0</span>
+                </div>
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-nav-link active">Home</a></li>
+            <li><a href="#shop" class="mobile-nav-link">Shop</a></li>
+            <li><a href="#collections" class="mobile-nav-link">Collections</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">PREMIUM HOODIE COLLECTION</h1>
+            <p class="hero-subtitle">Elevate your style with our exclusive designs</p>
+            <button class="btn hero-btn">SHOP NOW</button>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-slides">
+            <div class="slide active" style="background-image: url('images/hoodie/all/h1.png')"></div>
+            <div class="slide" style="background-image: url('images/hoodie/all/h2.png')"></div>
+            <div class="slide" style="background-image: url('images/hoodie/all/h1.png')"></div>
+        </div>
+        <div class="hero-slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="shop">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">OUR HOODIES</h2>
+                <div class="section-filter">
+                    <select id="filter">
+                        <option value="all">All Products</option>
+                        <option value="men">Men's Collection</option>
+                        <option value="women">Women's Collection</option>
+                        <option value="unisex">Unisex</option>
+                        <option value="limited">Limited Edition</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be loaded here dynamically -->
+            </div>
+            
+            <div class="load-more">
+                <button class="btn load-more-btn" id="load-more">LOAD MORE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3 class="feature-title">Free Shipping</h3>
+                <p class="feature-text">On all orders over $50</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fas fa-undo"></i>
+                </div>
+                <h3 class="feature-title">Easy Returns</h3>
+                <p class="feature-text">30-day return policy</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="feature-title">Secure Payment</h3>
+                <p class="feature-text">100% secure checkout</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="feature-title">24/7 Support</h3>
+                <p class="feature-text">Dedicated support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">OUR COLLECTIONS</h2>
+            </div>
+            
+            <div class="collection-grid">
+                <div class="collection-card">
+                  <div class="collection-img" style="background-image: url('selling/sneaker.png')"></div>
+                  <div class="collection-content">
+                    <h3 class="collection-title">Jewellery Edition</h3>
+                    <button class="btn collection-btn" onclick="window.location.href='#'">
+                      VIEW COLLECTION
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="collection-card">
+                  <div class="collection-img" style="background-image: url('selling/bag.png')"></div>
+                  <div class="collection-content">
+                    <h3 class="collection-title">Premium Bags</h3>
+                    <button class="btn collection-btn" onclick="window.location.href='#'">
+                      VIEW COLLECTION
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="collection-card">
+                  <div class="collection-img" style="background-image: url('selling/hoodie.png')"></div>
+                  <div class="collection-content">
+                    <h3 class="collection-title">Limited Edition</h3>
+                    <button class="btn collection-btn" onclick="window.location.href='#'">
+                      VIEW COLLECTION
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">JOIN OUR NEWSLETTER</h2>
+                <p class="newsletter-text">Subscribe to get updates on new arrivals, special offers and other discount information.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn newsletter-btn">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>YOUR CART</h3>
+            <button class="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price">$0.00</span>
+            </div>
+            <button class="btn checkout-btn">CHECKOUT</button>
+        </div>
+    </div>
+    <div class="cart-overlay"></div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar">
+        <div class="wishlist-header">
+            <h3>YOUR WISHLIST</h3>
+            <button class="close-wishlist">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items">
+            <!-- Wishlist items will be loaded here -->
+        </div>
+        <div class="wishlist-footer">
+            <button class="btn view-wishlist-btn">VIEW ALL</button>
+        </div>
+    </div>
+    <div class="wishlist-overlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo footer-logo" onclick="window.location.href='index.html'">
+                        <span class="logo-text">BETTSIDDY</span>
+                        <span class="logo-subtext">collections</span>
+                    </div>
+                    <p class="footer-about">Premium hoodies designed for comfort and style. Elevate your everyday wear with our exclusive collections.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">SHOP</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Men's Collection</a></li>
+                        <li><a href="#">Women's Collection</a></li>
+                        <li><a href="#">Unisex Hoodies</a></li>
+                        <li><a href="#">Limited Edition</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">HELP</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">CONTACT</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> karen, Nairobi</li>
+                        <li><i class="fas fa-phone"></i> +254702638901</li>
+                        <li><i class="fas fa-envelope"></i> info@bettsiddy.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Bettsiddy Collections. All Rights Reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Notification Toast -->
+    <div class="toast"></div>
+
+    <script src="hoodie.js"></script>
+</body>
+</html>
