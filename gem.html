@@ -25,18 +25,18 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="logo" onclick="window.location.href='index.html'">
+            <a href="index.html" class="logo">
                 <span class="logo-text">BETTSIDDY</span>
                 <span class="logo-subtext">collections</span>
-            </div>
+            </a>
             
             <nav class="navbar">
                 <ul class="nav-links">
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#shop" class="nav-link">Shop</a></li>
                     <li><a href="#collections" class="nav-link">Collections</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#https://solocho.github.io/bettsidddycollection/about.html" class="nav-link">About</a></li>
+                    <li><a href="https://solocho.github.io/bettsidddycollection/contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
             
@@ -45,14 +45,14 @@
                     <input type="text" placeholder="Search jewelry...">
                     <i class="fas fa-search"></i>
                 </div>
-                <div class="icon wishlist-icon">
+                <a href="#" class="icon wishlist-icon">
                     <i class="far fa-heart"></i>
                     <span class="icon-badge wishlist-count">0</span>
-                </div>
-                <div class="icon cart-icon">
+                </a>
+                <a href="#" class="icon cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="icon-badge cart-count">0</span>
-                </div>
+                </a>
                 <div class="hamburger">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -68,8 +68,8 @@
             <li><a href="#home" class="mobile-nav-link active">Home</a></li>
             <li><a href="#shop" class="mobile-nav-link">Shop</a></li>
             <li><a href="#collections" class="mobile-nav-link">Collections</a></li>
-            <li><a href="#about" class="mobile-nav-link">About</a></li>
-            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li><a href="https://solocho.github.io/bettsidddycollection/about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="https://solocho.github.io/bettsidddycollection/contact.html" class="mobile-nav-link">Contact</a></li>
         </ul>
     </div>
 
@@ -78,7 +78,7 @@
         <div class="hero-content">
             <h1 class="hero-title">AUTHENTIC KENYAN JEWELRY</h1>
             <p class="hero-subtitle">Handcrafted treasures that celebrate African heritage</p>
-            <button class="btn hero-btn">SHOP NOW</button>
+            <a href="#shop" class="btn hero-btn">SHOP NOW</a>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-slides">
@@ -113,10 +113,14 @@
             
             <div class="product-grid" id="product-grid">
                 <!-- Products will be loaded here dynamically -->
+                <!-- Each product should have a link like: -->
+                <!-- <a href="#" class="product-link"> -->
+                <!--   [product content] -->
+                <!-- </a> -->
             </div>
             
             <div class="load-more">
-                <button class="btn load-more-btn" id="load-more">LOAD MORE</button>
+                <a href="#" class="btn load-more-btn" id="load-more">LOAD MORE</a>
             </div>
         </div>
     </section>
@@ -166,30 +170,24 @@
                 <div class="collection-card">
                     <div class="collection-img" style="background-image: url('selling/bag.png')"></div>
                     <div class="collection-content">
-                        <h3 class="collection-title">Premium bags</h3>
-                        <button class="btn collection-btn">
-                            VIEW COLLECTION
-                        </button>
+                        <h3 class="collection-title">Premium Bags</h3>
+                        <a href="https://solocho.github.io/bettsidddycollection/bags.html" class="btn collection-btn">VIEW COLLECTION</a>
                     </div>
                 </div>
               
                 <div class="collection-card">
                     <div class="collection-img" style="background-image: url('selling/hoodie.png')"></div>
                     <div class="collection-content">
-                        <h3 class="collection-title"></h3>
-                        <button class="btn collection-btn">
-                            VIEW COLLECTION
-                        </button>
+                        <h3 class="collection-title">Hoodie Collection</h3>
+                        <a href="https://solocho.github.io/bettsidddycollection/hoodie.html" class="btn collection-btn">VIEW COLLECTION</a>
                     </div>
                 </div>
               
                 <div class="collection-card">
                     <div class="collection-img" style="background-image: url('selling/sneaker.png')"></div>
                     <div class="collection-content">
-                        <h3 class="collection-title">jewellery edition</h3>
-                        <button class="btn collection-btn">
-                            VIEW COLLECTION
-                        </button>
+                        <h3 class="collection-title">Jewellery Edition</h3>
+                        <a href="#shop" class="btn collection-btn">VIEW COLLECTION</a>
                     </div>
                 </div>
             </div>
@@ -204,6 +202,7 @@
                 <p>Bettsiddy gem Collections is dedicated to preserving and promoting Kenya's rich jewelry-making heritage. Each piece in our collection is handcrafted by skilled artisans using traditional techniques passed down through generations.</p>
                 <p>We work directly with local craftsmen and women, ensuring fair wages and sustainable practices. Our jewelry incorporates authentic Kenyan materials like recycled brass, beads, and semi-precious stones.</p>
                 <p>By choosing Bettsiddy gem, you're not just acquiring beautiful jewelry - you're supporting Kenyan artisans and keeping cultural traditions alive.</p>
+                <a href="https://solocho.github.io/bettsidddycollection/about.html" class="btn about-btn">READ MORE</a>
             </div>
         </div>
     </section>
@@ -232,13 +231,17 @@
         </div>
         <div class="cart-items">
             <!-- Cart items will be loaded here -->
+            <!-- Each cart item should have a link like: -->
+            <!-- <a href="#" class="cart-item-link"> -->
+            <!--   [cart item content] -->
+            <!-- </a> -->
         </div>
         <div class="cart-footer">
             <div class="cart-total">
                 <span>Total:</span>
                 <span class="total-price">KES 0.00</span>
             </div>
-            <button class="btn checkout-btn">CHECKOUT</button>
+            <a href="https://solocho.github.io/bettsidddycollection/checkout.html" class="btn checkout-btn">CHECKOUT</a>
         </div>
     </div>
     <div class="cart-overlay"></div>
@@ -253,9 +256,13 @@
         </div>
         <div class="wishlist-items">
             <!-- Wishlist items will be loaded here -->
+            <!-- Each wishlist item should have a link like: -->
+            <!-- <a href="#" class="wishlist-item-link"> -->
+            <!--   [wishlist item content] -->
+            <!-- </a> -->
         </div>
         <div class="wishlist-footer">
-            <button class="btn view-wishlist-btn">VIEW ALL</button>
+            <a href="#shop" class="btn view-wishlist-btn">VIEW ALL</a>
         </div>
     </div>
     <div class="wishlist-overlay"></div>
@@ -265,16 +272,16 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="logo footer-logo" onclick="window.location.href='index.html'">
-                        <span class="logo-text">AFRIGEM</span>
+                    <a href="index.html" class="logo footer-logo">
+                        <span class="logo-text">Bettsiddy collections</span>
                         <span class="logo-subtext">collections</span>
-                    </div>
+                    </a>
                     <p class="footer-about">Authentic Kenyan jewelry handcrafted by local artisans. Each piece tells a story of African heritage and craftsmanship.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/share/1A2WmeqZGG/"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/bettsiddy?igsh=MTVxNHpuZDhjN3YwdA==&utm_source=ig_contact_invite"><i class="fab fa-instagram"></i></a>
+                        
                     </div>
                 </div>
                 <div class="footer-col">
@@ -290,11 +297,11 @@
                 <div class="footer-col">
                     <h3 class="footer-title">HELP</h3>
                     <ul class="footer-links">
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Shipping & Returns</a></li>
-                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/faq.html">FAQs</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/return.html">Shipping & Returns</a></li>
+                        
                         <li><a href="#">Track Order</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="https://solocho.github.io/bettsidddycollection/contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -302,7 +309,7 @@
                     <ul class="footer-contact">
                         <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
                         <li><i class="fas fa-phone"></i> +254 702638901</li>
-                        <li><i class="fas fa-envelope"></i> info@bettsiddy.com</li>
+                        <li><i class="fas fa-envelope"></i> bettsiddycollections@gmail.com</li>
                     </ul>
                 </div>
             </div>
